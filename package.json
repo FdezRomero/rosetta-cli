@@ -1,0 +1,84 @@
+{
+  "name": "rosetta-cli",
+  "version": "0.1.0",
+  "author": "Rodrigo Fernández (@FdezRomero)",
+  "license": "MIT",
+  "description": "Easily switch & run commands on Intel/ARM modes in M1-powered Macs with Rosetta 2.",
+  "keywords": [
+    "rosetta",
+    "apple",
+    "mac",
+    "m1",
+    "arm",
+    "arch",
+    "cli"
+  ],
+  "homepage": "https://github.com/FdezRomero/rosetta-cli",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/FdezRomero/rosetta-cli.git"
+  },
+  "bugs": {
+    "url": "https://github.com/FdezRomero/rosetta-cli/issues"
+  },
+  "main": "dist/index.js",
+  "module": "dist/rosetta-cli.esm.js",
+  "typings": "dist/index.d.ts",
+  "files": [
+    "dist",
+    "cli",
+    "preinstall"
+  ],
+  "bin": {
+    "rosetta": "./cli",
+    "rosetta-cli": "./cli"
+  },
+  "scripts": {
+    "preinstall": "./preinstall",
+    "start": "tsdx watch",
+    "build": "tsdx build --target node --format cjs",
+    "test": "tsdx test",
+    "lint": "tsdx lint src",
+    "prepare": "npm run build",
+    "size": "size-limit",
+    "analyze": "size-limit --why",
+    "release": "standard-version"
+  },
+  "engines": {
+    "node": ">=14"
+  },
+  "os": [
+    "darwin"
+  ],
+  "dependencies": {
+    "commander": "^8.0.0",
+    "inquirer": "^8.1.2"
+  },
+  "devDependencies": {
+    "@size-limit/preset-small-lib": "^5.0.1",
+    "@types/inquirer": "^7.3.3",
+    "husky": "^7.0.1",
+    "size-limit": "^5.0.1",
+    "standard-version": "^9.3.1",
+    "tsdx": "^0.14.1",
+    "tslib": "^2.3.0",
+    "typescript": "^4.3.5"
+  },
+  "prettier": {
+    "printWidth": 80,
+    "semi": true,
+    "singleQuote": true,
+    "trailingComma": "none"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "tsdx lint"
+    }
+  },
+  "size-limit": [
+    {
+      "path": "dist/rosetta-cli.cjs.production.min.js",
+      "limit": "10 KB"
+    }
+  ]
+}
