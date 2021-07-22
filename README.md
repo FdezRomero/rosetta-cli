@@ -1,6 +1,10 @@
+![rosetta-cli logo](https://raw.githubusercontent.com/FdezRomero/rosetta-cli/main/assets/rosetta-cli.png)
+
 # rosetta-cli
 
 Easily switch & run commands on Intel/ARM modes in M1-powered Macs with Rosetta 2.
+
+It provides a more comfortable user experience on top of the `arch` and `softwareupdate` binaries in macOS.
 
 ## Requirements
 
@@ -13,13 +17,13 @@ Easily switch & run commands on Intel/ARM modes in M1-powered Macs with Rosetta 
 
 ```shell
 npm i -g rosetta-cli
-rosetta install
+rosetta
 ```
 
 ### Without installing (network needed)
 
 ```shell
-npx rosetta-cli install
+npx rosetta-cli
 ```
 
 ## Usage
@@ -27,13 +31,13 @@ npx rosetta-cli install
 ```
 Usage: rosetta [options] [commands...]
 
-  rosetta                              Prompts for mode and starts a new shell.
+  rosetta                              prompts for mode and starts a new shell
 
-  rosetta [-i, --intel]                Starts a new shell in Intel (x86_64) mode.
-  rosetta [-a, --arm]                  Starts a new shell in ARM (arm64) mode.
+  rosetta [-i, --intel]                starts a new shell in Intel (x86_64) mode
+  rosetta [-a, --arm]                  starts a new shell in ARM (arm64) mode
 
-  rosetta [-i, --intel] <commands...>  Runs the commands in Intel (x86_64) mode.
-  rosetta [-a, --arm] <commands...>    Runs the commands in ARM (arm64) mode.
+  rosetta [-i, --intel] <commands...>  runs the commands in Intel (x86_64) mode
+  rosetta [-a, --arm] <commands...>    runs the commands in ARM (arm64) mode
 
 Options:
   -i, --intel    run in Intel (x86_64) mode
@@ -42,9 +46,11 @@ Options:
   -h, --help     display help for command
 
 Commands:
-  install        Installs Rosetta 2 on this Mac.
+  install        installs Rosetta 2 on this Mac
 ```
 
 ## Contributing
 
 Check out [CONTRIBUTING.md](CONTRIBUTING.md).
+
+MIT licensed. Created and maintained by Rodrigo Fernández ([GitHub](https://github.com/FdezRomero), [Twitter](https://twitter.com/FdezRomero)).
