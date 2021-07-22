@@ -26,15 +26,13 @@
   "typings": "dist/index.d.ts",
   "files": [
     "dist",
-    "cli",
-    "preinstall"
+    "cli"
   ],
   "bin": {
     "rosetta": "./cli",
     "rosetta-cli": "./cli"
   },
   "scripts": {
-    "preinstall": "./preinstall",
     "start": "tsdx watch",
     "build": "tsdx build --target node --format cjs",
     "test": "tsdx test",
