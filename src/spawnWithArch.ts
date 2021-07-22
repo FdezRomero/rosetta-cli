@@ -34,6 +34,6 @@ export const spawnWithArch = (
   });
 
   childProcess.on('close', () =>
-    console.log(`✨ ${archName} (${arch}) execution finished`)
+    console.log(`✨ ${archName} (${arch}) execution finished.`)
   );
 };

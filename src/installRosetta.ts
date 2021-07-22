@@ -1,8 +1,7 @@
-import { exec, spawn } from 'child_process';
+import { spawn } from 'child_process';
 import { access } from 'fs/promises';
-import { promisify } from 'util';
 
-const execAsync = promisify(exec);
+import { execAsync } from './execAsync';
 
 const fileExists = async (file: string): Promise<boolean> => {
   try {
@@ -13,17 +12,10 @@ const fileExists = async (file: string): Promise<boolean> => {
   }
 };
 
-const hasIntelCpu = async (): Promise<boolean> => {
-  try {
-    await execAsync(
-      '/usr/sbin/sysctl -n machdep.cpu.brand_string | grep -o "Intel"'
-    );
-
-    return true;
-  } catch {
-    return false;
-  }
-};
+export const isRosettaInstalled = (): Promise<boolean> =>
+  fileExists(
+    '/Library/Apple/System/Library/LaunchDaemons/com.apple.oahd.plist'
+  );
 
 const getMajorMacOSVersion = async (): Promise<number> => {
   const { stdout: version } = await execAsync(
@@ -35,17 +27,7 @@ const getMajorMacOSVersion = async (): Promise<number> => {
 };
 
 export const installRosetta = async (): Promise<void> => {
-  const intelCpu = await hasIntelCpu();
-
-  if (intelCpu) {
-    return console.log(
-      '✅ Your Mac has an Intel CPU, no need to install Rosetta 2.'
-    );
-  }
-
-  const rosettaInstalled = await fileExists(
-    '/Library/Apple/System/Library/LaunchDaemons/com.apple.oahd.plist'
-  );
+  const rosettaInstalled = await isRosettaInstalled();
 
   if (rosettaInstalled) {
     return console.log('✅ Your Mac already has Rosetta 2 installed.');
@@ -54,8 +36,8 @@ export const installRosetta = async (): Promise<void> => {
   const majorMacOSVersion = await getMajorMacOSVersion();
 
   if (majorMacOSVersion < 11) {
-    return console.error(
-      '❌ You need macOS Big Sur or later in order to install Rosetta 2.'
+    throw new Error(
+      'You need macOS Big Sur or later in order to install Rosetta 2.'
     );
   }
 
@@ -69,6 +51,7 @@ export const installRosetta = async (): Promise<void> => {
   return new Promise<void>((resolve, reject) => {
     childProcess.once('exit', code => {
       if (code === 0) {
+        console.log('✅ Rosetta 2 has been installed.');
         return resolve();
       }
 
