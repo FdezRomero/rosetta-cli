@@ -1,21 +1,14 @@
 import { spawn } from 'child_process';
-import { access } from 'fs/promises';
 
 import { execAsync } from './execAsync';
 
-const fileExists = async (file: string): Promise<boolean> => {
-  try {
-    await access(file);
-    return true;
-  } catch {
-    return false;
-  }
-};
-
-export const isRosettaInstalled = (): Promise<boolean> =>
-  fileExists(
-    '/Library/Apple/System/Library/LaunchDaemons/com.apple.oahd.plist'
+export const isRosettaInstalled = async (): Promise<boolean> => {
+  const { stdout } = await execAsync(
+    'pkgutil --files com.apple.pkg.RosettaUpdateAuto'
   );
+
+  return Boolean(stdout);
+};
 
 const getMajorMacOSVersion = async (): Promise<number> => {
   const { stdout: version } = await execAsync(

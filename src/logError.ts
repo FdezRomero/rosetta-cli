@@ -1,2 +1,2 @@
-export const logError = (err: Error): void =>
+export const logError = (err: Error | any): void =>
   console.error('❌ Error:', err?.message);
