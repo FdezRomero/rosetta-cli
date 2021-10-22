@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.2.1](https://github.com/FdezRomero/rosetta-cli/compare/v0.2.0...v0.2.1) (2021-10-22)
+
+
+### Features
+
+* improve rosetta detection with pkgutil ([73743f4](https://github.com/FdezRomero/rosetta-cli/commit/73743f478b82320b824d96a2c72fc588fb0a578b))
+
+
+### Bug Fixes
+
+* exit if rosetta is needed but not installed ([6e657ff](https://github.com/FdezRomero/rosetta-cli/commit/6e657ff0661561bc6b8ab7e0cbf347951b5da297))
+
 ## [0.2.0](https://github.com/FdezRomero/rosetta-cli/compare/v0.1.0...v0.2.0) (2021-07-22)
 
 
