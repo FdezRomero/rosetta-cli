@@ -17,7 +17,9 @@ export const checkRosetta = async (): Promise<void> => {
     }
   ]);
 
-  if (install) {
-    return installRosetta();
+  if (!install) {
+    throw new Error('rosetta-cli needs to have Rosetta 2 installed.');
   }
+
+  return installRosetta();
 };
