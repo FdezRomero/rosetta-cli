@@ -1,11 +1,9 @@
+import { GET_INTEL_CPU } from './commands';
 import { execAsync } from './execAsync';
 
 const hasIntelCpu = async (): Promise<boolean> => {
   try {
-    await execAsync(
-      '/usr/sbin/sysctl -n machdep.cpu.brand_string | grep -o "Intel"'
-    );
-
+    await execAsync(GET_INTEL_CPU);
     return true;
   } catch {
     return false;
