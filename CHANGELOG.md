@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.3.1](https://github.com/FdezRomero/rosetta-cli/compare/v0.3.0...v0.3.1) (2022-11-12)
+
+
+### Bug Fixes
+
+* broken cli import ([59bfb6c](https://github.com/FdezRomero/rosetta-cli/commit/59bfb6c2203dd8de07458ec390465556446465f7))
+
 ## [0.3.0](https://github.com/FdezRomero/rosetta-cli/compare/v0.2.1...v0.3.0) (2022-11-12)
 
 
