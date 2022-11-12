@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.3.0](https://github.com/FdezRomero/rosetta-cli/compare/v0.2.1...v0.3.0) (2022-11-12)
+
+
+### Features
+
+* convert to ESM only ([f402eca](https://github.com/FdezRomero/rosetta-cli/commit/f402eca56da97302ae37ac673e6cc8a0996c857c))
+* extract shell commands ([3f16786](https://github.com/FdezRomero/rosetta-cli/commit/3f1678637290cfc789adc548f96bc5230374c13a))
+* migrate to esm module ([2ef0eb5](https://github.com/FdezRomero/rosetta-cli/commit/2ef0eb5eff64417e65dbe5792acb7df5ee1fae49))
+
 ### [0.2.1](https://github.com/FdezRomero/rosetta-cli/compare/v0.2.0...v0.2.1) (2021-10-22)
 
 
