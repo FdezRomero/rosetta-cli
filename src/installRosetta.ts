@@ -1,20 +1,19 @@
 import { spawn } from 'child_process';
+import {
+  GET_MACOS_VERSION,
+  INSTALL_ROSETTA,
+  LIST_ROSETTA_FILES
+} from './commands';
 
 import { execAsync } from './execAsync';
 
 export const isRosettaInstalled = async (): Promise<boolean> => {
-  const { stdout } = await execAsync(
-    'pkgutil --files com.apple.pkg.RosettaUpdateAuto'
-  );
-
+  const { stdout } = await execAsync(LIST_ROSETTA_FILES);
   return Boolean(stdout);
 };
 
 const getMajorMacOSVersion = async (): Promise<number> => {
-  const { stdout: version } = await execAsync(
-    '/usr/bin/sw_vers -productVersion'
-  );
-
+  const { stdout: version } = await execAsync(GET_MACOS_VERSION);
   const [major] = version?.split('.');
   return Number(major ?? 0);
 };
@@ -34,12 +33,7 @@ export const installRosetta = async (): Promise<void> => {
     );
   }
 
-  const childProcess = spawn(
-    '/usr/sbin/softwareupdate --install-rosetta --agree-to-license',
-    {
-      stdio: 'inherit'
-    }
-  );
+  const childProcess = spawn(INSTALL_ROSETTA, { stdio: 'inherit' });
 
   return new Promise<void>((resolve, reject) => {
     childProcess.once('exit', code => {
